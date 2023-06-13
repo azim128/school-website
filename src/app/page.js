@@ -11,30 +11,12 @@ import TestimonialCarousel from "@/components/slider";
 import { useState, useEffect } from 'react';
 
 export default function Home() {
-  const { systemTheme, theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  function toggleImage() {
-    const img = document.getElementById("dnmode");
-    const currentSrc = img.src;
-    const newSrc = currentSrc.includes("bulb.png")
-      ? "./images/moon.png"
-      : "./images/bulb.png";
-    img.src = newSrc;
-    theme==='dark'?setTheme("light"):setTheme('dark')
-  }
-
-  if (!mounted) return null;
-
-  const currentTheme = theme === 'system' ? systemTheme : theme;
 
   return (
-    <ThemeProvider enableSystem={true} attribute="class">
-      <div className={`dark:bg-black ${currentTheme}`}>
+    
+      <div className="dark:bg-black">
         <Navbar />
         <HeroSection />
         <div id="#about" className="my-20">
@@ -56,11 +38,11 @@ export default function Home() {
           <Footer />
         </div>
 
-        <div onClick={toggleImage}>
+        {/* <div onClick={toggleImage}>
           <img id="dnmode" src="./images/bulb.png" alt="image" />
-        </div>
+        </div> */}
       </div>
-    </ThemeProvider>
+   
   );
 }
 
